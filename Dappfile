@@ -11,7 +11,7 @@ dimg do
     install do
       run 'pip install --no-cache-dir -r /app/requirements.txt'
     end
-    before_setup.shell 'mkdir /db'
+    before_setup.run 'mkdir /db'
     setup do
       run 'echo "python /app/project1/manage.py migrate" > /opt/start.sh',
       'echo "python /app/project1/manage.py runserver 0.0.0.0:8000" >> /opt/start.sh'
