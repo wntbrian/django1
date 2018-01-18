@@ -13,7 +13,6 @@ Compile: &JobCompile
     script:
         - curl -fsSL https://$CI_ADDR/kube/stages/raw/master/compile_with_dapp_stages.sh | bash
     allow_failure: false
-    when: manual
 Deploy: &JobDeploy
     type: deploy
     only:
