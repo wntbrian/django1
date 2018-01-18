@@ -6,6 +6,8 @@ stages:
     - clean
 Compile: &JobCompile
     type: compile
+    only:
+      - branches
     tags:
         - dapp
     script:
@@ -14,6 +16,8 @@ Compile: &JobCompile
     when: manual
 Deploy: &JobDeploy
     type: deploy
+    only:
+      - branches
     tags:
         - kube-deploy
     script:
@@ -22,3 +26,19 @@ Deploy: &JobDeploy
         - echo "http://${CI_COMMIT_REF_SLUG}.${CI_PROJECT_NAME}.kube.local"
         - kubectl rollout status -n $NAMESPACE deploy/${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}
     when: on_success
+    environment:
+      name: $NAMESPACE/$CI_COMMIT_REF_SLUG
+      url: http://${CI_COMMIT_REF_SLUG}.${CI_PROJECT_NAME}.kube.local
+      on_stop: Undeploy
+Undeploy:
+    type: deploy
+    only:
+      - branches
+    tags:
+        - kube-deploy
+    script:
+        - bash ./deploy.sh
+        - kubectl delete -f `pwd`/.deploy
+    environment:
+      name: $NAMESPACE/$CI_COMMIT_REF_SLUG
+      action: stop
