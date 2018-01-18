@@ -1,0 +1,22 @@
+dimg do
+  docker.from 'python:3-alpine'
+
+  git do
+        add '/' do
+         to '/app'
+		 stage_dependencies.setup '.py'
+		end
+  end
+  shell do
+    install do
+      run 'pip install --no-cache-dir -r /app/requirements.txt'
+    end
+    before_setup.shell 'mkdir /db'
+    setup do
+      run 'echo "python /app/manage.py migrate" > /opt/start.sh',
+      'echo "python /app/manage.py runserver 0.0.0.0:8000" >> /opt/start.sh'
+    end
+  end
+    docker.cmd 'bash', '/opt/start.sh'
+    docker.expose 8000
+end

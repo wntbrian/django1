@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.timezone import now
 
 class Artist(models.Model):
     name = models.CharField('название', max_length=70)
@@ -7,7 +7,6 @@ class Artist(models.Model):
     data_of_career = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('-data_of_career',)
         verbose_name = 'артист'
         verbose_name_plural = 'артисты'
 
@@ -17,7 +16,7 @@ class Artist(models.Model):
 
 class Genre(models.Model):
     name = models.CharField('название',max_length=20)
-    data = models.DateField('дата выхода')
+    data = models.DateField('дата выхода', blank=True, default=now)
 
     class Meta:
         verbose_name = 'жанр'

@@ -1,0 +1,24 @@
+stages:
+    - compile
+    - deploy
+    - test
+    - undeploy
+    - clean
+Compile: &JobCompile
+    type: compile
+    tags:
+        - dapp
+    script:
+        - curl -fsSL https://$CI_ADDR/kube/stages/raw/master/compile_with_dapp_stages.sh | bash
+    allow_failure: false
+    when: manual
+Deploy: &JobDeploy
+    type: deploy
+    tags:
+        - kube-deploy
+    script:
+        - bash ./deploy.sh
+        - kubectl apply -f `pwd`/.deploy
+        - echo "http://${CI_COMMIT_REF_SLUG}.${CI_PROJECT_NAME}.kube.local"
+        - kubectl rollout status -n $NAMESPACE deploy/${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}
+    when: on_success
