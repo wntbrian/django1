@@ -19,5 +19,6 @@ dimg do
     end
   end
     docker.cmd 'bash', '/opt/start.sh'
+    docker.workdir 'app/project1'
     docker.expose 8000
 end
