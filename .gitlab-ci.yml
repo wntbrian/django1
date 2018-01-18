@@ -31,7 +31,7 @@ Deploy: &JobDeploy
       url: http://${CI_COMMIT_REF_SLUG}.${CI_PROJECT_NAME}.kube.local
       on_stop: Undeploy
 Undeploy:
-    type: deploy
+    type: undeploy
     only:
       - branches
     tags:
