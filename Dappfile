@@ -4,7 +4,7 @@ dimg do
   git do
         add '/' do
          to '/app'
-		 stage_dependencies.setup '.py'
+		 stage_dependencies.setup '*.py'
 		end
   end
   shell do
@@ -13,7 +13,8 @@ dimg do
     end
     before_setup.run 'mkdir /db'
     setup do
-      run 'echo "python /app/project1/manage.py migrate" > /opt/start.sh',
+      run ''mkdir /opt',
+      'echo "python /app/project1/manage.py migrate" > /opt/start.sh',
       'echo "python /app/project1/manage.py runserver 0.0.0.0:8000" >> /opt/start.sh'
     end
   end
