@@ -16,7 +16,6 @@ class Artist(models.Model):
 
 class Genre(models.Model):
     name = models.CharField('название',max_length=20)
-    data = models.DateField('дата выхода', blank=True, default=now)
 
     class Meta:
         verbose_name = 'жанр'
@@ -28,6 +27,7 @@ class Genre(models.Model):
 
 class Album(models.Model):
     name = models.CharField('название',max_length=30)
+    data = models.DateField('дата выхода', blank=True, default=now)
 
     class Meta:
         verbose_name = 'альбом'
