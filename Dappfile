@@ -13,7 +13,7 @@ dimg do
     end
     before_setup.run 'mkdir /db'
     setup do
-      run ''mkdir /opt',
+      run 'mkdir /opt',
       'echo "python /app/project1/manage.py migrate" > /opt/start.sh',
       'echo "python /app/project1/manage.py runserver 0.0.0.0:8000" >> /opt/start.sh'
     end
