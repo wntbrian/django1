@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SQL3DIR = os.getenv('SQL3DIR',BASE_DIR)
+DEPLOY_HOSTS = os.getenv('DEPLOY_HOSTS', '127.0.0.1')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -25,7 +26,9 @@ SECRET_KEY = 'rqe&=_jboj@6z-f5vpsp8k(bah8t$yc9*3dvex2&f-sq#ksp#e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    DEPLOY_HOSTS,
+]
 
 
 # Application definition
