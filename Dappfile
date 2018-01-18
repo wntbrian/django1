@@ -4,7 +4,7 @@ dimg do
   git do
         add '/' do
          to '/app'
-		 stage_dependencies.setup '*'
+		 stage_dependencies.install '*'
 		end
   end
   shell do

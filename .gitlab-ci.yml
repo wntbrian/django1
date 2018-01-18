@@ -39,6 +39,7 @@ Undeploy:
     script:
         - bash ./deploy.sh
         - kubectl delete -f `pwd`/.deploy
+    when: manual
     environment:
       name: $NAMESPACE/$CI_COMMIT_REF_SLUG
       action: stop
