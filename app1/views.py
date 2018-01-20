@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import Http404
 from .models import Artist, Genre
-
+from .filters import ArtistFilter, GenreFilter
 
 def artist_list(request):
-    artists = Artist.objects.filter(name__contains="")
-    return render(request, 'app1/index.html', {'artists': artists})
+    artist_list = Artist.objects.all()
+    artist_filter = ArtistFilter(request.GET, queryset=artist_list)
+    return render(request, 'app1/index.html', {'filter': artist_filter})
 
 def tracks_list(request, artist_name):
     try:
@@ -16,7 +17,7 @@ def tracks_list(request, artist_name):
         'tracks': artist.tracks_of_artist.select_related(),
         'artist': artist,
     })
-def genre_list(request, genre_name):
+def genre_list_track(request, genre_name):
     try:
         genre = Genre.objects.get(name=genre_name)
     except Genre.DoesNotExist:
@@ -25,3 +26,7 @@ def genre_list(request, genre_name):
         'genre': genre,
         'tracks': genre.tracks_of_genre.select_related()
     })
+def genge_list(request):
+    genre = Genre.objects.all()
+    genre_filter = GenreFilter(request.GET, queryset=genre)
+    return render(request, 'app1/genre_list.html', {'filter': genre_filter})

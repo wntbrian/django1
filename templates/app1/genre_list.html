@@ -5,8 +5,8 @@
     <button type="submit">Filter</button>
     </form>
 <ul>
-    {% for artist in filter.qs %}
-    <li><a href='{% url "artist" artist.name %}'>{{artist.name}}</a></li>
+    {% for genre in filter.qs %}
+    <li><a href='{% url "genre" genre.name %}'>{{genre.name}}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

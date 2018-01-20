@@ -18,6 +18,7 @@ from . import views
 
 urlpatterns = [
     path('', views.artist_list, name='Home'),
-    path('<str:artist_name>/', views.tracks_list, name='artist'),
-    path('genre/<str:genre_name>/', views.genre_list, name='genre'),
+    path('artist/<str:artist_name>/', views.tracks_list, name='artist'),
+    path('genre/', views.genge_list, name='genre_list'),
+    path('genre/<str:genre_name>/', views.genre_list_track, name='genre'),
 ]

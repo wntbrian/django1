@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 
 class Artist(models.Model):
-    name = models.CharField('название', max_length=70)
+    name = models.CharField('Исполнитель', max_length=70)
     description = models.TextField('описание', blank=True)
     data_of_career = models.DateTimeField(auto_now_add=True)
 
