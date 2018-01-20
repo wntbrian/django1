@@ -3,7 +3,7 @@ from django.utils.timezone import now
 
 class Artist(models.Model):
     name = models.CharField('название', max_length=70)
-    description = models.TextField('описание')
+    description = models.TextField('описание', blank=True)
     data_of_career = models.DateTimeField(auto_now_add=True)
 
     class Meta:

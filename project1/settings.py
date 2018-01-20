@@ -18,18 +18,17 @@ SQL3DIR = os.getenv('SQL3DIR',BASE_DIR)
 DEPLOY_HOSTS = os.getenv('DEPLOY_HOSTS', '127.0.0.1')
 ENV_DEBUG = os.getenv('DEBUG', True)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rqe&=_jboj@6z-f5vpsp8k(bah8t$yc9*3dvex2&f-sq#ksp#e'
+SECRET_KEY = 'vgr5kjl34q5u_9gq%$5-un3sy^by_(!u$-ur9m2^$7e-csv6tg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ENV_DEBUG
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    DEPLOY_HOSTS,
+	DEPLOY_HOSTS,
 ]
 
 
@@ -42,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'project1.apps.app1',
+    'app1.apps.App1Config',
 ]
 
 MIDDLEWARE = [
@@ -60,9 +59,8 @@ ROOT_URLCONF = 'project1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            'project1/templates'
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
