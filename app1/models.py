@@ -39,9 +39,9 @@ class Album(models.Model):
 
 class Track(models.Model):
     name = models.CharField('название', max_length=50)
-    genre = models.ManyToManyField('Genre', related_name='tracks')
-    album = models.ManyToManyField('Album', related_name='tracks')
-    artist = models.ForeignKey(Artist, verbose_name='Артист', on_delete=models.DO_NOTHING, related_name='tracks')
+    genre = models.ManyToManyField('Genre', related_name='tracks_of_genre')
+    album = models.ManyToManyField('Album', related_name='tracks_of_album')
+    artist = models.ForeignKey(Artist, verbose_name='Артист', on_delete=models.DO_NOTHING, related_name='tracks_of_artist')
 
     class Meta:
         verbose_name = 'трек'

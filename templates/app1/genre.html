@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{genre}}</h1>
+<ul>
+    {% for track in tracks %}
+        <li>{{track.name}} (
+             <a href='{% url "artist" track.artist %}'>{{track.artist}}</a>
+        )</li>
+    {% endfor %}
+</ul>
+{% endblock %}
