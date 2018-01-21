@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1><a href="/">Home</a> - {{artist}}</h1>
-<ul>
+    <h1><a href="{% url "artist_list" %}">Исполнители</a>
+        <a href="{% url "genre_list" %}">Жанры</a>
+        <a href="{% url "album_list" %}">Альбомы</a>
+    </h1>
+    Альбомы: <br>
+    <ul>
+    {% for album in albums %}
+        <li>
+            <a href='{% url 'album' album.name %}' >{{ album.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    Композиции: <br>
+    <ul>
     {% for track in tracks %}
         <li>{{track.name}} (
         {% for gen in track.genre.select_related %}
@@ -10,4 +22,5 @@
         )</li>
     {% endfor %}
 </ul>
+
 {% endblock %}

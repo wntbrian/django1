@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h1>Исполнители
+        <a href="{% url "genre_list" %}">Жанры</a>
+        <a href="{% url "album_list" %}">Альбомы</a>
+    </h1>
     <form method="get">
     {{ filter.form.name }}
     <button type="submit">Filter</button>
     </form>
-<ul>
+
+    <ul>
     {% for artist in filter.qs %}
     <li><a href='{% url "artist" artist.name %}'>{{artist.name}}</a></li>
   {% endfor %}

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h1><a href="{% url "artist_list" %}">Исполнители</a>
+        Жанры
+        <a href="{% url "album_list" %}">Альбомы</a>
+    </h1>
     <form method="get">
     {{ filter.form.name }}
     <button type="submit">Filter</button>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1><a href="{% url "artist_list" %}">Исполнители</a>
+        <a href="{% url "genre_list" %}">Жанры</a>
+        Альбомы
+    </h1>
+<ul>
+    {% for album in albums %}
+    <li><a href='{% url "album" album.name %}'>{{album.name}}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
