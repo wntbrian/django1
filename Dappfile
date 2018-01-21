@@ -14,11 +14,11 @@ dimg do
     before_setup.run 'mkdir /db'
     setup do
       run 'mkdir /opt',
-      'echo "python /app/project1/manage.py migrate" > /opt/start.sh',
-      'echo "python /app/project1/manage.py runserver 0.0.0.0:8000" >> /opt/start.sh'
+      'echo "python /app/manage.py migrate" > /opt/start.sh',
+      'echo "python /app/manage.py runserver 0.0.0.0:8000" >> /opt/start.sh'
     end
   end
     docker.cmd 'bash', '/opt/start.sh'
-    docker.workdir 'app/project1'
+    docker.workdir '/app'
     docker.expose 8000
 end
