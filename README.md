@@ -1,0 +1,1 @@
+[![pipeline status](https://sv-django.site/badges/master/pipeline.svg)](https://sv-django.site)
