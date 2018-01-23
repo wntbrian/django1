@@ -11,7 +11,7 @@
 
     <ul>
     {% for artist in filter.qs %}
-    <li><a href='{% url "artist" artist.name %}'>{{artist.name}}</a></li>
+    <li><a href='{% url "artist" artist.name %}'>{{ artist.name }}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

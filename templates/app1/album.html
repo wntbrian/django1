@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Альбом: <a href='{% url "album_list" %}'> {{album}} </a></h1>
+    <h1>Альбом: <a href='{% url "album_list" %}'> {{ album }} </a></h1>
 Композиции:
     <ul>
     {% for track in tracks %}
-        <li>{{track.name}} (
-             <a href='{% url "artist" track.artist %}'>{{track.artist}}</a>
+        <li>{{ track.name }} (
+             <a href='{% url "artist" track.artist %}'>{{ track.artist }}</a>
         )</li>
     {% endfor %}
 </ul>

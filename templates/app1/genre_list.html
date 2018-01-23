@@ -10,7 +10,7 @@
     </form>
 <ul>
     {% for genre in filter.qs %}
-    <li><a href='{% url "genre" genre.name %}'>{{genre.name}}</a></li>
+    <li><a href='{% url "genre" genre.name %}'>{{ genre.name }}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 
+
 class Artist(models.Model):
     name = models.CharField('Исполнитель', max_length=70)
     description = models.TextField('описание', blank=True)

@@ -16,6 +16,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('', views.artist_list, name='artist_list'),
     path('artist/<str:artist_name>/', views.tracks_list, name='artist'),

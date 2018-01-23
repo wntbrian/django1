@@ -6,7 +6,7 @@
     </h1>
 <ul>
     {% for album in albums %}
-    <li><a href='{% url "album" album.name %}'>{{album.name}}</a></li>
+    <li><a href='{% url "album" album.name %}'>{{ album.name }}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}
