@@ -16,7 +16,7 @@
     <ul>
     {% for track in tracks %}
         <li>{{track.name}} (
-        {% for gen in track.genre.select_related %}
+        {% for gen in track.genre.all %}
              <a href='{% url "genre" gen %}'> {{ gen }}</a>
             {% endfor %}
         )</li>

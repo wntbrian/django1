@@ -19,7 +19,7 @@ def tracks_list(request, artist_name):
     except Artist.DoesNotExist:
         raise Http404
     return render(request, 'app1/tracks.html', {
-        'tracks': artist.tracks_of_artist.select_related(),
+        'tracks': artist.tracks_of_artist.all(),
         'artist': artist,
         'albums': albums,
 
@@ -33,7 +33,7 @@ def genre_list_track(request, genre_name):
         raise Http404
     return  render(request, 'app1/genre.html', {
         'genre': genre,
-        'tracks': genre.tracks_of_genre.select_related()
+        'tracks': genre.tracks_of_genre.all()
     })
 
 
@@ -55,5 +55,5 @@ def album_list_track(request, album_name):
         raise Http404
     return  render(request, 'app1/album.html', {
         'album': album,
-        'tracks': album.tracks_of_album.select_related()
+        'tracks': album.tracks_of_album.all()
     })
